@@ -274,6 +274,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 document.addEventListener("DOMContentLoaded", () => {
+  let menuBtn = document.querySelector('.menu-btn');
+  let menu = document.querySelector('.menu');
+  menuBtn.addEventListener('click', function () {
+    menuBtn.classList.toggle('active');
+    menu.classList.toggle('active');
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
   $(document).ready(function () {
     $('[data-submit]').on('click', function (e) {
       e.preventDefault();
@@ -371,6 +379,23 @@ document.addEventListener('DOMContentLoaded', function () {
     nextEl: '.swiper-button-next1',
     prevEl: '.swiper-button-prev1',
   },
+   breakpoints: {
+      320: {
+        slidesPerView: 1,
+        initialSlide: false,   
+        spaceBetween: 20
+      },
+      767: {
+       slidesPerView: 1,
+        initialSlide: false,   
+        spaceBetween: 20
+      },
+      1200: {
+        slidesPerView: 1,
+        initialSlide: false,   
+        spaceBetween: 20
+      }
+    }
 });
   const swiper2 = new Swiper('.swiper2', {
     slidesPerView: 4,      // 4 колонки
@@ -417,8 +442,7 @@ document.addEventListener('DOMContentLoaded', function () {
     breakpoints: {
       // when window width is >= 320px
       320: {
-        spaceBetween: 0,
-        loop: true,
+        spaceBetween: 10,
         slidesPerView: 1
       },
       767: {
@@ -437,16 +461,41 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
-
 document.addEventListener("DOMContentLoaded", () => {
-  let menuBtn = document.querySelector('.menu-btn');
-  let menu = document.querySelector('.menu');
-  menuBtn.addEventListener('click', function () {
-    menuBtn.classList.toggle('active');
-    menu.classList.toggle('active');
+  const imageSwiper = new Swiper('.image-swiper', {
+    slidesPerView: 1,
+    speed: 600,
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    navigation: {
+      nextEl: '.next',
+      prevEl: '.prev',
+    },
+    on: {
+      slideChange(swiper) {
+        setActiveTextSlide(swiper.activeIndex);
+      }
+    }
   });
-});
 
+  const textSlides = document.querySelectorAll('.text-swiper .swiper-slide');
+
+  function setActiveTextSlide(index) {
+    textSlides.forEach((slide, i) => {
+      slide.classList.toggle('swiper-slide-active', i === index);
+    });
+  }
+
+  // 👉 КЛИК ПО ПРАВОМУ БЛОКУ
+  textSlides.forEach((slide, index) => {
+    slide.addEventListener('click', () => {
+      imageSwiper.slideTo(index);
+    });
+  });
+
+  // инициализация первого активного
+  setActiveTextSlide(0);
+});
 
 // Замена <img class="svg"> на inline SVG
 document.addEventListener("DOMContentLoaded", () => {
