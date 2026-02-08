@@ -256,6 +256,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const wrap = document.querySelector('.item__wrap');
+  const area = document.querySelector('.item__area');
+  const boxes = document.querySelectorAll('.item__box');
+  const els = document.querySelectorAll('.item__el');
+
+  area.style.position = 'absolute';
+
+  boxes.forEach((box, index) => {
+    box.addEventListener('mouseenter', () => {
+      // показываем item__area
+      area.style.opacity = '1';
+      area.style.pointerEvents = 'auto';
+
+      // позиционирование item__area
+      const wrapRect = wrap.getBoundingClientRect();
+      const boxRect = box.getBoundingClientRect();
+      area.style.top = `${boxRect.top - wrapRect.top}px`;
+
+      // active у item__el
+      els.forEach(el => el.classList.remove('active'));
+      if (els[index]) els[index].classList.add('active');
+
+      // active у item__box
+      boxes.forEach(b => b.classList.remove('active'));
+      box.classList.add('active');
+    });
+  });
+});
 document.addEventListener('DOMContentLoaded', function () {
   $('.articmodal-close').click(function (e) {
     $.arcticmodal('close');
@@ -391,8 +420,8 @@ document.addEventListener('DOMContentLoaded', function () {
         spaceBetween: 20
       },
       1200: {
-        slidesPerView: 1,
-        initialSlide: false,   
+        slidesPerView: 'auto',
+        initialSlide: 1,   
         spaceBetween: 20
       }
     }

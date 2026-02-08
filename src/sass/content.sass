@@ -637,8 +637,11 @@ ul.info li
    .swiper1 
       width: 100%
       margin-bottom: 27px
+      padding-right: 600px
+      position: relative
+      left: -140px
       .swiper-slide 
-         width: 420px
+         width: 400px
          height: auto
          transition: 0.5s
          a 
@@ -657,7 +660,7 @@ ul.info li
                transition: 0.5s
                object-fit: cover
             div 
-               padding: 26px 29px 23px 
+               padding: 26px 40px 23px 29px
                transition: 0.5s
                width: 100%
                max-width: 462px
@@ -999,6 +1002,9 @@ ul.info li
          line-height: 24px
          width: 100%
          max-width: 45.16%
+         span 
+            display: block
+            margin-top: 15px
 .risks 
    padding: 100px 0 50px
    background: rgba(0, 96, 169, 0.05)
@@ -1182,3 +1188,101 @@ ul.info li
       justify-content: center
       width: 37px
       margin-right: 40px
+.item 
+   &__wrap
+      position: relative
+   &__box 
+      width: 100%
+      display: flex
+      align-items: center
+      position: relative
+      &:after 
+         content: ""
+         display: block
+         width: 1920px
+         position: absolute
+         top: 0
+         left: 0
+         background: url(/img/bg5.png) no-repeat center center
+         height: 100%
+         z-index: 1
+         opacity: 0
+         transition: 0.5s
+      &:hover 
+         &:after 
+            opacity: 1
+         .item__name, .item__text
+            color: white
+      &.active
+         &:after 
+            opacity: 1
+         .item__name, .item__text
+            color: white
+   &__icon 
+      margin-bottom: 20px
+   &__pic 
+      flex: 1 0 auto 
+      width: 100%
+      max-width: 538px
+      height: 559px
+      object-fit: cover
+      margin-right: 31px
+      margin-left: -253px
+   &__content 
+      position: relative
+      z-index: 2
+      width: 100%
+      max-width: 784px
+   &__name 
+      margin-bottom: 5px 
+      color: rgba(79, 79, 79, 1)
+      font-size: 26px
+      font-weight: 600
+      letter-spacing: 0.03rem
+      line-height: 110%
+      transition: 0.5s
+   &__text 
+      margin-bottom: 20px
+      color: rgba(79, 79, 79, 1)
+      font-size: 16px
+      letter-spacing: 0.01rem
+      font-weight: 400
+      line-height: 24px
+      transition: 0.5s
+   &__area 
+      width: 320px
+      border-radius: 25px 25px 
+      overflow: hidden
+      position: absolute
+      margin-top: 75px
+      right: 0
+      z-index: 5
+      opacity: 0
+      pointer-events: none
+      transition: opacity 0.3s ease, top 0.4s ease
+   &__el 
+      width: 100%
+      padding: 15px 34px
+      display: flex
+      align-items: center
+      background: $or
+      border-bottom: 1px solid white
+      p 
+         color: rgba(255, 255, 255, 1)
+         font-size: 16px
+         font-weight: 600
+         line-height: 115%
+         margin-left: 24px
+         transition: 0.5s
+      .svg 
+         path 
+            fill: white
+      &.active 
+         background: white
+         .svg 
+            path 
+               fill: rgba(79, 79, 79, 1)
+         p 
+            color: rgba(79, 79, 79, 1)
+      &:last-child
+         border-bottom: none

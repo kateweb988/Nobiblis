@@ -1203,9 +1203,12 @@ ul.info li {
 .ser .swiper1 {
   width: 100%;
   margin-bottom: 27px;
+  padding-right: 600px;
+  position: relative;
+  left: -140px;
 }
 .ser .swiper1 .swiper-slide {
-  width: 420px;
+  width: 400px;
   height: auto;
   transition: 0.5s;
 }
@@ -1227,7 +1230,7 @@ ul.info li {
   object-fit: cover;
 }
 .ser .swiper1 .swiper-slide a div {
-  padding: 26px 29px 23px;
+  padding: 26px 40px 23px 29px;
   transition: 0.5s;
   width: 100%;
   max-width: 462px;
@@ -1655,6 +1658,10 @@ ul.info li {
   width: 100%;
   max-width: 45.16%;
 }
+.text__row p span {
+  display: block;
+  margin-top: 15px;
+}
 
 .risks {
   padding: 100px 0 50px;
@@ -1887,6 +1894,120 @@ ul.info li {
   margin-right: 40px;
 }
 
+.item__wrap {
+  position: relative;
+}
+.item__box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.item__box:after {
+  content: "";
+  display: block;
+  width: 1920px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(../img/bg5.png) no-repeat center center;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: 0.5s;
+}
+.item__box:hover:after {
+  opacity: 1;
+}
+.item__box:hover .item__name, .item__box:hover .item__text {
+  color: white;
+}
+.item__box.active:after {
+  opacity: 1;
+}
+.item__box.active .item__name, .item__box.active .item__text {
+  color: white;
+}
+.item__icon {
+  margin-bottom: 20px;
+}
+.item__pic {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 538px;
+  height: 559px;
+  object-fit: cover;
+  margin-right: 31px;
+  margin-left: -253px;
+}
+.item__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 784px;
+}
+.item__name {
+  margin-bottom: 5px;
+  color: rgb(79, 79, 79);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+  line-height: 110%;
+  transition: 0.5s;
+}
+.item__text {
+  margin-bottom: 20px;
+  color: rgb(79, 79, 79);
+  font-size: 16px;
+  letter-spacing: 0.01rem;
+  font-weight: 400;
+  line-height: 24px;
+  transition: 0.5s;
+}
+.item__area {
+  width: 320px;
+  border-radius: 25px 25px;
+  overflow: hidden;
+  position: absolute;
+  margin-top: 75px;
+  right: 0;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, top 0.4s ease;
+}
+.item__el {
+  width: 100%;
+  padding: 15px 34px;
+  display: flex;
+  align-items: center;
+  background: rgb(225, 138, 4);
+  border-bottom: 1px solid white;
+}
+.item__el p {
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 115%;
+  margin-left: 24px;
+  transition: 0.5s;
+}
+.item__el .svg path {
+  fill: white;
+}
+.item__el.active {
+  background: white;
+}
+.item__el.active .svg path {
+  fill: rgb(79, 79, 79);
+}
+.item__el.active p {
+  color: rgb(79, 79, 79);
+}
+.item__el:last-child {
+  border-bottom: none;
+}
+
 @media screen and (max-width: 1620px) {
   .container {
     max-width: 1400px !important;
@@ -1965,6 +2086,16 @@ ul.info li {
   .contacts__info p {
     font-size: 24px;
   }
+  .item__content {
+    max-width: 46%;
+  }
+  .ser .swiper1 {
+    width: 100%;
+    margin-bottom: 27px;
+    padding-right: 388px;
+    position: relative;
+    left: 0px;
+  }
 }
 @media screen and (max-width: 1350px) {
   .container {
@@ -2030,8 +2161,14 @@ ul.info li {
   .van__box {
     align-items: center;
   }
+  .item__content {
+    max-width: 43%;
+  }
 }
 @media screen and (max-width: 1199px) {
+  .ser .swiper1 {
+    padding-right: 0;
+  }
   .container {
     max-width: 960px !important;
   }
@@ -2315,6 +2452,23 @@ ul.info li {
   .page .cont .header__pic {
     width: 31%;
   }
+  .item__area {
+    display: none;
+  }
+  .item__content {
+    max-width: 100%;
+  }
+  .item__box:after {
+    display: none;
+  }
+  .item__pic {
+    height: 559px;
+    max-width: 405px;
+    margin-left: -32px;
+  }
+  .item__box.active .item__name, .item__box.active .item__text {
+    color: rgb(79, 79, 79);
+  }
 }
 @media (max-width: 991px) {
   input, textarea, select {
@@ -2460,6 +2614,18 @@ ul.info li {
   }
   .area3 .area__content {
     max-width: 100%;
+  }
+  .item__box {
+    margin-bottom: 40px;
+    flex-direction: column;
+  }
+  .item__pic {
+    margin-bottom: 25px;
+    width: 112%;
+    margin-right: 0;
+    height: 400px;
+    max-width: 110%;
+    margin-left: -87px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -2747,5 +2913,13 @@ ul.info li {
     left: -33px;
     width: 126%;
     height: 380px;
+  }
+  .item__pic {
+    margin-bottom: 25px;
+    width: 112%;
+    margin-right: 0;
+    height: 340px;
+    max-width: 110%;
+    margin-left: -1px;
   }
 }
